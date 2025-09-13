@@ -3,41 +3,68 @@ import './Projects.css';
 
 const projects = [
   {
-    title: 'Project 1',
-    description: 'A brief description of Project 1.',
-    technologies: 'React, Node.js',
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard.',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
     liveLink: '#',
     sourceLink: '#',
+    status: 'Live',
+    icon: '🛒'
   },
   {
-    title: 'Project 2',
-    description: 'A brief description of Project 2.',
-    technologies: 'Angular, Firebase',
+    title: 'Task Management App',
+    description: 'A collaborative task management application with real-time updates and team collaboration features.',
+    technologies: ['React', 'Firebase', 'Material-UI'],
     liveLink: '#',
     sourceLink: '#',
+    status: 'Live',
+    icon: '📋'
   },
+  {
+    title: 'Weather Dashboard',
+    description: 'A responsive weather application with location-based forecasts and interactive charts.',
+    technologies: ['JavaScript', 'Chart.js', 'OpenWeather API'],
+    liveLink: '#',
+    sourceLink: '#',
+    status: 'Live',
+    icon: '🌤️'
+  }
 ];
 
 const Projects = () => {
   return (
-    <div className="projects-container container mt-5">
-      <h2>Projects</h2>
-      <div className="row">
-        {projects.map((project, index) => (
-          <div className="col-md-6 col-lg-4 mb-4" key={index}>
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">{project.title}</h5>
-                <p className="card-text">{project.description}</p>
-                <p className="card-text"><small className="text-muted">{project.technologies}</small></p>
-                <a href={project.liveLink} className="btn btn-primary me-2">Live Project</a>
-                <a href={project.sourceLink} className="btn btn-secondary">Source Code</a>
+    <section className="projects-section">
+      <div className="container">
+        <h2 className="section-title">Featured Projects</h2>
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <div className="project-card" key={index}>
+              <div className="project-image">
+                <span>{project.icon}</span>
+                <div className="project-status">{project.status}</div>
+              </div>
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="project-tech">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+                <div className="project-links">
+                  <a href={project.liveLink} className="project-link btn-primary-project">
+                    🔗 Live Demo
+                  </a>
+                  <a href={project.sourceLink} className="project-link btn-secondary-project">
+                    📁 Source Code
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
